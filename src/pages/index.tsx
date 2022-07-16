@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { GetStaticProps } from 'next';
 import { useContext, useEffect } from 'react';
-import { MovieCard } from '../components/movie-card';
 
+import { MovieCard } from '../components/movie-card';
 import { Context, IMovie } from '../context';
 
 import styles from './index.module.css';
@@ -14,7 +15,9 @@ const Home = ({ movies }: IHomeProps) => {
   const context = useContext(Context);
 
   useEffect(() => {
-    context.setMovies(movies);
+    if (context.movies.length === 0) {
+      context.setMovies(movies);
+    }
   }, []);
 
   const handleSkip = () => {
@@ -57,7 +60,7 @@ const Home = ({ movies }: IHomeProps) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   let movies: IMovie[] = [];
 
   for (let index = 0; index < 2; index++) {
@@ -65,7 +68,7 @@ export const getStaticProps = async () => {
     movies = [...movies, ...request.data.results];
   }
 
-  return { props: { movies } }
+  return { props: { movies }, revalidate: 1000 }
 }
 
 export default Home
