@@ -1,15 +1,16 @@
 import axios from 'axios';
 import { useContext, useEffect } from 'react';
+import { MovieCard } from '../components/movie-card';
 
 import { Context, IMovie } from '../context';
 
 import styles from './index.module.css';
 
-interface HomeProps {
+interface IHomeProps {
   movies: IMovie[];
 }
 
-const Home = ({ movies }: HomeProps) => {
+const Home = ({ movies }: IHomeProps) => {
   const context = useContext(Context);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const Home = ({ movies }: HomeProps) => {
     <main className={styles.container}>
       {context.movies.length && (
         <div>
-          <p>{context.movies[0].overview}</p>
+          <MovieCard movie={context.movies[0]} />
           <button onClick={handleLike}>Curtir</button>
           <button onClick={handleSkip}>Pular</button>
           <button onClick={handleNotLike}>Não Curtir</button>
@@ -59,7 +60,7 @@ const Home = ({ movies }: HomeProps) => {
 export const getStaticProps = async () => {
   let movies: IMovie[] = [];
 
-  for (let index = 0; index < 5; index++) {
+  for (let index = 0; index < 2; index++) {
     const request = await axios.post(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}&language=pt-BR&page=${index+1}`);
     movies = [...movies, ...request.data.results];
   }

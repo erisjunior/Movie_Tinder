@@ -1,0 +1,13 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  padding: 50px;
+  
+  background-color: #FD463F;
+  color: #fff;
+}
+
+.container > button {
+  text-transform: capitalize;
+}
