@@ -1,3 +1,7 @@
+.container > div {
+  margin-bottom: 20px;
+}
+
 .buttonsContainer {
   display: flex;
   justify-content: space-between;

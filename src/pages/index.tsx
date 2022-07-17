@@ -60,7 +60,7 @@ const Home = ({ movies }: IHomeProps) => {
   }
 
   return (
-    <main className={styles.container}>
+    <main>
       {context.movies.length && (
         <div>
           <MovieCard movie={context.movies[0]} />
