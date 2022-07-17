@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import { useContext, useEffect } from 'react';
 
 import { MovieCard } from '../components/movie-card';
@@ -63,9 +64,17 @@ const Home = ({ movies }: IHomeProps) => {
       {context.movies.length && (
         <div>
           <MovieCard movie={context.movies[0]} />
-          <button onClick={handleLike}>Curtir</button>
-          <button onClick={handleSkip}>Pular</button>
-          <button onClick={handleNotLike}>Não Curtir</button>
+          <div className={styles.buttonsContainer}>
+            <button onClick={handleNotLike}>
+              <Image src="/not-like.png" alt="Não Curti!" width={25} height={30} />
+              <span>Não Curti!</span>
+            </button>
+            <button onClick={handleSkip}>Pular</button>
+            <button onClick={handleLike}>
+              <Image src="/like.png" alt="Curti!" width={25} height={30} />
+              <span>Curti!</span>
+            </button>
+          </div>
         </div>
       )}
     </main>

@@ -1,2 +1,43 @@
-.container {
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 50px;
+}
+
+.buttonsContainer button {
+  outline: none;
+  border: none;
+  background: #fff;
+  padding: 15px;
+  cursor: pointer;
+
+  color: #333;
+
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  height: 50px;
+  width: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 100px;
+}
+
+.buttonsContainer button:first-child {
+  width: 180px;
+}
+
+.buttonsContainer button:last-child {
+  width: 180px;
+  color: #FD463F;
+}
+
+.buttonsContainer span {
+  margin-left: 10px;
 }
