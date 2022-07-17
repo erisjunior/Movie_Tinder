@@ -20,6 +20,18 @@ const Home = ({ movies }: IHomeProps) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (context.movies.length) {
+      context.setCurrentMovie(context.movies[0]);
+    } else {
+      context.setCurrentMovie(null);
+    }
+
+    return () => {
+      context.setCurrentMovie(null);
+    }
+  }, [context])
+
   const handleSkip = () => {
     if (!context.movies.length) return;
 

@@ -17,6 +17,8 @@ export interface IContext {
   setLikedMovies: (movies: IMovie[]) => void;
   notLikedMovies: IMovie[];
   setNotLikedMovies: (movies: IMovie[]) => void;
+  currentMovie: IMovie | null;
+  setCurrentMovie: (movie: IMovie | null) => void;
 }
 
 interface IProviderProps {
@@ -29,16 +31,19 @@ export const Context = createContext<IContext>({
   likedMovies: [],
   setLikedMovies: () => {},
   notLikedMovies: [],
-  setNotLikedMovies: () => {}
+  setNotLikedMovies: () => {},
+  currentMovie: null,
+  setCurrentMovie: () => {},
 });
 
 export const Provider = ({ children }: IProviderProps) => {
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [likedMovies, setLikedMovies] = useState<IMovie[]>([]);
   const [notLikedMovies, setNotLikedMovies] = useState<IMovie[]>([]);
+  const [currentMovie, setCurrentMovie] = useState<IMovie | null>(null);
 
   return (
-    <Context.Provider value={{ movies, setMovies, likedMovies, setLikedMovies, notLikedMovies, setNotLikedMovies }}>
+    <Context.Provider value={{ movies, setMovies, likedMovies, setLikedMovies, notLikedMovies, setNotLikedMovies, currentMovie, setCurrentMovie }}>
       {children}
     </Context.Provider>
   )

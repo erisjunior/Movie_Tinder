@@ -1,13 +1,60 @@
 .container {
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  position: relative;
 
-  padding: 50px;
-  
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   background-color: #FD463F;
   color: #fff;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.container > button {
+.backgroundRed {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #de342ed0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.buttonsContainer > button:not(:last-child) {
+  margin-right: 50px;
+}
+
+
+.buttonsContainer .activeButton {
+  border-bottom: 2px solid #fff;
+}
+
+.buttonsContainer > button {
+  outline: none;
+  border: none;
+  background: none;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+
+  color: #fff;
   text-transform: capitalize;
+
+  font-size: 16px;
+  line-height: 20px;
 }
